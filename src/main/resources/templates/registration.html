@@ -1,28 +1,248 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Inscription</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gestion etablisement</title>
+
+    <!-- Scripts -->
+    
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- LeafletMaaps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+
+     
 </head>
 <body>
-	<h1>Inscription</h1>
-	<form method="POST" th:action="@{/register}" id="registerForm">
-		<label for="firstName">Prénom : </label>
-		<input type="text" name="firstName" />
-		<br />
-		<label for="lastName">Nom : </label>
-		<input type="text" name="lastName" />
-		<br />
-		<label for="username">Identifiant : </label>
-		<input type="text" name="username" />
-		<br />
-		<label for="password">Mot de passe : </label>
-		<input type="password" name="password" />
-		<br />
-		<label for="confirm">Confirmer mot de passe : </label>
-		<input type="password" name="confirm" />
-		<br />
-		<input type="submit" value="S'inscrire" />
-	</form>
+    <div id="app">
+
+        <!-- Just an image -->
+
+    
+
+    <nav class="navbar navbar-dark fixed-top" style="padding: 0px 0px;background: linear-gradient(90deg, #4ba1c5 1%, rgb(255, 255, 255));">
+        <div class="container-fluid">
+            <span class="navbar-text" style="padding-top: 0px; padding-bottom: 18px">
+                <span style="color: rgba(255, 255, 255, 0)">.</span>
+            </span>
+            <span class="navbar-text" style="padding-top: 0px; padding-bottom: 0px">
+            </span>
+        </div>
+    </nav>
+        
+    
+
+    <nav class="navbar navbar-dark fixed-top" style="padding: 0px 0px;background: linear-gradient(90deg, #4ba1c5 1%, rgb(255, 255, 255));">
+        <div class="container-fluid">
+            <span class="navbar-text" style="padding-top: 0px; padding-bottom: 0px">
+                <span style="color: rgba(255, 255, 255, 0)">.</span>
+            </span>
+            
+        </div>
+    </nav>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top" style="margin-top: 30px; padding-top: 0px; padding-bottom: 0px; z-index: 100">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <center>
+                        <div style="background: url(images/alumni-logo.png);
+                        background-size: cover;
+                        background-position: center center;
+                        width: 1000%;
+                        padding-top: 300%;
+                        margin: 12px;"></div>
+                    </center>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto" style="width: 100%; text-align: center; padding-left: 300px;
+                    padding-right: 350px;
+                    padding-top: 15px;
+                    padding-bottom: 5px;">
+                        <!-- Authentication Links -->
+                        
+
+                        <!--
+                            @if (Route::has('landing'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('landing') }}">{{ __('Landing') }}</a>
+                                </li>
+                            @endif
+                            -->
+
+                           
+                                <li class="nav-item">
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/login}">Authentication</a>
+                                </li>
+                          
+                            
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/register}">Inscription</a>
+                                </li>
+                           
+
+                    </ul>
+                
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid" style="background: url(images/great2.jpg); padding-top: 150px">
+        <div class="row justify-content-center">
+        <div style="padding: 20px 10px" class="col-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" style="background: url(images/img-register.jpg); border-color: #d9d9dc; background-size: cover; padding: 90px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; height: 450px; z-index: 10;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card" style="padding: 10px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; background-color: #f9f8fde6;" id="apprentisage">
+                            <h5 style="padding: 5px; text-align: center">
+                                Inscription
+                            </h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form method="POST" th:action="@{/register}" id="registerForm">
+                                            
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group row" style="padding: 0px 10px">
+                                                            <label for="username" style="text-align: center" class="col-form-label">Identifiant</label>
+                                                            <input id="username" style="text-align: center" type="text" placeholder="Entrez votre identifiant" class="form-control" name="username" value="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group row" style="padding: 0px 10px">
+                                                            <label for="lastName" style="text-align: center" class="col-form-label">Nom</label>
+                                
+                                                            
+                                                                <input id="lastName" style="text-align: center" type="text" placeholder="Entrez votre nom" class="form-control" name="lastName" value="">
+                                
+                                        
+                                                        </div>
+                        
+                                                        <div class="form-group row" style="padding: 0px 10px">
+                                                            <label for="password" style="text-align: center" class="col-form-label">Mot de passe</label>
+                                
+                                                            
+                                                                <input id="password" style="text-align: center" type="password" placeholder="Entrez votre mot de passe" class="form-control" name="password">
+                                
+                                                        </div>
+
+                                                        
+
+                                                    </div>
+
+                                                    <div class="col-6">
+
+                                                        <div class="form-group row" style="padding: 0px 10px">
+                                                            <label for="firstName" style="text-align: center" class="col-form-label">Prénom</label>
+                                                                <input id="firstName" style="text-align: center" type="text" placeholder="Entrez votre prénom" class="form-control" name="firstName" value="">
+                                
+                                                               
+                                                        </div>
+
+                        
+                                                        <div class="form-group row" style="padding: 0px 10px">
+                                                            <label for="confirm" style="text-align: center" class="col-form-label">Confirmation du mot de passe</label>
+                                
+                                                            
+                                                                <input id="confirm" style="text-align: center" type="text" placeholder="Confirmer votre mot de passe" class="form-control" name="confirm" value="">
+                                
+                                                               
+                                                        </div>
+                        
+                                                        
+
+                                                    </div>
+
+                                                    <div class="col-12">
+
+                                                        <div class="form-group row" style="padding: 15px">
+                                                            <center>
+                                                                <input type="submit" class="btn" style="margin-bottom: 10px; width: 100%; background-color: #6ec1e4e6; color: white; text-shadow: 0px 0px 10px rgb(255 255 255 / 90%);  color: white; box-shadow: 0px 0px 50px 5px rgb(255 255 255 / 50%);">
+                                                                    S'inscrire
+                                                                </input><br>
+                                                            </center>
+    
+                                                            <center><hr>
+                                                                <span style="text-decoration: none; color: #212529; text-align: left">
+                                                                    <i>Vous êtes déjà membre ? <a href="#" style="color: #2c96c3; font-weight: 500;">Se connecter !</a></i>
+                                                                </span>
+                                                            </center>
+                                                        </div>
+
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br><br><br><br><br><br><br><br>
+</div>
+    
+    <style>
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #2c96c3;
+    }
+
+    .genra {
+        color: black;
+        width: 2rem;
+        display: inline-block;
+    }
+
+    .nav-link:hover{
+        color: #006dac!important;
+
+    }
+
+    .py-4{
+
+    padding-bottom: 0px!important;
+        
+    }
+
+    
+
+
+    </style>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script> -->
 </body>
 </html>

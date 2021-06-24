@@ -1,6 +1,4 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,15 +89,12 @@
                             @endif
                             -->
 
-                           
                                 <li class="nav-item">
-                                    <a class="nav-link" style="font-weight: 500" th:href="@{/login}">Authentication</a>
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/professor}">Professeur</a>
                                 </li>
-                          
-                            
-                            
+
                                 <li class="nav-item">
-                                    <a class="nav-link" style="font-weight: 500" th:href="@{/register}">Inscription</a>
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/administrator}">Administrateur</a>
                                 </li>
                            
 
@@ -108,23 +103,17 @@
                 </div>
             </div>
         </nav>
+
         <div class="container-fluid" style="background: url(images/great2.jpg); padding-top: 150px">
         <div class="row justify-content-center">
         <div style="padding: 20px 10px" class="col-12">
             <div class="container">
                 <div class="row">
-
-                        <div class="col-md-6">
-                            <h2>Se connecter</h2>
-                            <a th:href="@{/login}"><div class="card" style="background: url(images/img-connexion.jpg); border-color: #d9d9dc; background-size: cover; padding: 90px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; height: 450px; z-index: 10;">
-                            </div></a>
+                    <div class="col-md-12">
+                        <h1>Erreur 403 : Non autorisé</h1>
+                        <div class="card" style="background: url(images/403.png); border-color: #d9d9dc; background-size: cover; padding: 90px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; height: 450px; z-index: 10;">
                         </div>
-                        <div class="col-md-6">
-                            <h2>S'inscrire</h2>
-                            <a th:href="@{/register}"><div class="card" style="background: url(images/img-inscription.jpg); border-color: #d9d9dc; background-size: cover; padding: 90px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; height: 450px; z-index: 10;">
-                            </div></a>
-                        </div>
-                    
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,14 +92,16 @@
                             -->
 
                            
-                                <li class="nav-item">
-                                    <a class="nav-link" style="font-weight: 500" th:href="@{/login}">Authentication</a>
+                            <li class="nav-item">
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/logout}">Déconnexion</a>
                                 </li>
-                          
-                            
-                            
+
                                 <li class="nav-item">
-                                    <a class="nav-link" style="font-weight: 500" th:href="@{/register}">Inscription</a>
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/professor}">Professeur</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" style="font-weight: 500" th:href="@{/administrator}">Administrateur</a>
                                 </li>
                            
 
@@ -108,29 +110,73 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" style="background: url(images/great2.jpg); padding-top: 150px">
-        <div class="row justify-content-center">
-        <div style="padding: 20px 10px" class="col-12">
-            <div class="container">
-                <div class="row">
 
-                        <div class="col-md-6">
-                            <h2>Se connecter</h2>
-                            <a th:href="@{/login}"><div class="card" style="background: url(images/img-connexion.jpg); border-color: #d9d9dc; background-size: cover; padding: 90px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; height: 450px; z-index: 10;">
-                            </div></a>
-                        </div>
-                        <div class="col-md-6">
-                            <h2>S'inscrire</h2>
-                            <a th:href="@{/register}"><div class="card" style="background: url(images/img-inscription.jpg); border-color: #d9d9dc; background-size: cover; padding: 90px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important; height: 450px; z-index: 10;">
-                            </div></a>
-                        </div>
+        <div class="container-fluid" style="background: url(images/great2.jpg); padding-top: 150px">
+            <div class="row justify-content-center">
+                <div style="padding: 20px 10px" class="col-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1>Page Professeur</h1><br><br>
+                                <div class="card" style="padding: 20px; box-shadow: 0 .9rem 1rem rgba(255, 255, 255, 0.575)!important;; z-index: 10;">
+                                <div>
+                                <div class="card">
+                                    
                     
+                                    <div class="card-body">
+                                        <form method="POST" action="">
+                                           
+                    
+                                            <div class="form-group row" style="padding: 0px 30px">
+                                                <label for="email"  class="col-form-label">Selectionner une matière</label>
+                    
+                                                
+                                                    <input id="email" type="email" style="padding: 5px" placeholder="Matiere" class="form-control" name="email">
+                    
+                                                
+                                            </div>
+                    
+                                            <div class="form-group row" style="padding: 0px 30px">
+                                                <label for="password"  class="col-form-label">Selectionner un membre</label>
+                    
+                                                
+                                                    <input id="password" style="padding: 5px"  placeholder="Membre" class="form-control" name="password">
+                    
+                                                   
+                                                
+                                            </div>
+                                            <div class="form-group row" style="padding: 0px 30px">
+                                                <label for="password"  class="col-form-label">Selectionner une section</label>
+                    
+                                                
+                                                    <input id="password" style="padding: 5px"  placeholder="Section" class="form-control" name="password">
+                    
+                                                   
+                                                
+                                            </div><br>
+                    
+                                            <div class="form-group row" style="padding: 0px 20px">
+                                                
+                                                    
+                                                        <button type="submit" class="btn" style="margin-bottom: 10px; width: 100%; background-color: #6ec1e4e6; color: white; text-shadow: 0px 0px 10px rgb(255 255 255 / 90%);  color: white; box-shadow: 0px 0px 50px 5px rgb(255 255 255 / 50%);">
+                                                            Valider
+                                                        </button><br>
+                                                    
+
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div style="padding: 320px"></div>
         </div>
-    </div><br><br><br><br><br><br><br><br><br><br>
-</div>
-    
+    </div>
     <style>
 
     .navbar-light .navbar-nav .nav-link {

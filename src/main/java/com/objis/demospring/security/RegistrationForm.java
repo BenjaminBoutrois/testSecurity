@@ -53,6 +53,6 @@ public class RegistrationForm
 
 	public User toUser(PasswordEncoder passwordEncoder)
 	{
-		return new User(firstName, lastName, username, passwordEncoder.encode(password));
+		return new User(firstName, lastName, username, passwordEncoder.encode(password), "USER");
 	}
 }

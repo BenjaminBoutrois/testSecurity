@@ -1,26 +1,29 @@
 package com.objis.demospring.security;
 
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
+import javax.sql.DataSource;
+
 import com.objis.demospring.security.domaine.User;
 import com.objis.demospring.security.repositories.UserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SecurityConfig
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+	@Autowired
+    private DataSource dataSource;
 
 	//
 
@@ -58,8 +61,19 @@ public class SecurityConfig
 			throw new UsernameNotFoundException("User '" + username + "' not found");
 		};
 	}
+	
+	@Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .jdbcAuthentication()
+            .dataSource(dataSource)
+            .usersByUsernameQuery("select username, password, true " + "from user where username=?")
+            .authoritiesByUsernameQuery("select username, role from user where username=?")
+            .passwordEncoder(new BCryptPasswordEncoder());
+    }
+	
 
-	@Bean
+	/*@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception
 	{
 		return http
@@ -68,6 +82,27 @@ public class SecurityConfig
 				.antMatchers("/", "/home", "/register", "/login").permitAll()
 				.and()
 				.build();
-	}
-
+	}*/
+	
+	@Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/", "/home", "/css/*", "/js/*", "/images/*", "/register").permitAll()
+                .antMatchers("/administrator").hasAuthority("ADMIN")
+                .antMatchers("/professor").hasAuthority("PROF")
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/index", true)
+                .permitAll()
+                .and()
+            .logout()
+            	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            	.logoutSuccessUrl("/home")
+                .permitAll();
+    }
 }
