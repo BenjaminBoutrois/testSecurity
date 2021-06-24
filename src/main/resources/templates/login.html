@@ -2,18 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Register</title>
+<title>Connexion</title>
 </head>
 <body>
-	<h1>Register</h1>
+	<h1>Connexion</h1>
 	<form method="POST" th:action="@{/login}" id="loginForm">
-		<label for="username">Username: </label>
+		<label for="username">Identifiant : </label>
 		<input type="text" name="username" />
 		<br />
-		<label for="password">Password: </label>
+		<label for="password">Mot de passe : </label>
 		<input type="password" name="password" />
 		<br />
-		<input type="submit" value="Log in" />
+		<input type="submit" value="Se connecter" />
 	</form>
 </body>
 </html>

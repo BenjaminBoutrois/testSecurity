@@ -2,21 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Register</title>
+<title>Inscription</title>
 </head>
 <body>
-	<h1>Register</h1>
+	<h1>Inscription</h1>
 	<form method="POST" th:action="@{/register}" id="registerForm">
-		<label for="username">Username: </label>
+		<label for="firstName">Prénom : </label>
+		<input type="text" name="firstName" />
+		<br />
+		<label for="lastName">Nom : </label>
+		<input type="password" name="lastName" />
+		<br />
+		<label for="username">Identifiant : </label>
 		<input type="text" name="username" />
 		<br />
-		<label for="password">Password: </label>
+		<label for="password">Mot de passe : </label>
 		<input type="password" name="password" />
 		<br />
-		<label for="confirm">Confirm password: </label>
+		<label for="confirm">Confirmer mot de passe : </label>
 		<input type="password" name="confirm" />
 		<br />
-		<input type="submit" value="Register" />
+		<input type="submit" value="S'inscrire" />
 	</form>
 </body>
 </html>
